@@ -14,8 +14,12 @@ public class Methods {
 	 * @return the Euclidean distance between (x1,y1) and (x2,y2)
 	 */
 	public static double distanceBetween(double x1, double y1, double x2, double y2) {
-		double distance = 0;
 		// FIXME: Hint use Math methods (e.g. Math.sqrt) to compute the distance
+		
+		double sideA = y1 - y2;
+		double sideB = x1 - x2;
+		
+		double distance = Math.sqrt(Math.pow(sideA, 2)+ Math.pow(sideB, 2));
 		
 		return distance;
 	}
@@ -28,6 +32,7 @@ public class Methods {
 	 * @param radius the radius of the bull's eye
 	 */
 	public static void drawBullsEye(double x, double y, double radius) {
+		
 		StdDraw.setPenColor(StdDraw.BLACK);
 		StdDraw.filledCircle(x, y, radius);
 
@@ -35,17 +40,20 @@ public class Methods {
 		// Blue ring with 3.0/4.0 the radius
 		// suggested rgb values: 0, 109, 219
 
-		
+		StdDraw.setPenColor(0, 109, 219);
+		StdDraw.filledCircle(x,  y,  0.75*radius);
 
 		// Red ring with 1.0/2.0 the radius
 		// suggested rgb values: 146, 0, 0
 
-		
+		StdDraw.setPenColor(146, 0, 0);
+		StdDraw.filledCircle(x,  y,  0.5*radius);
 
 		// Yellow ring with 1.0/4.0 the radius
 		// suggested rgb values: 255, 255, 109
 
-		
+		StdDraw.setPenColor(255, 255, 109);
+		StdDraw.filledCircle(x,  y,  0.25*radius);
 	}
 
 	/**
@@ -63,6 +71,17 @@ public class Methods {
 		String result = "";
 		// TODO: Finish this method
 		
+		source.toCharArray();
+		
+		for (int i = 0; i < source.length(); i++) {
+			if (source.charAt(i) != (target)) {
+				result += source.charAt(i); 
+			}
+			else {
+				result += replacement;
+			}
+		}
+		
 		return result;
 	}
 
@@ -74,7 +93,11 @@ public class Methods {
 	 */
 	public static int arraySum(int[] values) {
 		int sum = 0;
+		
 		// FIXME: Compute the sum of the values in an array
+		for (int i = 0; i < values.length; i++) {
+			sum += values[i];
+		}
 		
 		return sum;
 	}
@@ -90,13 +113,35 @@ public class Methods {
 		int[] values = null; // FIXME: Create an array of the appropriate size
 		// TODO: Finish this method
 
-		
+		values = new int[length];
+		for (int i = 0; i < length; i++) {
+			values[i] = value;
+		}
 
 		return values;
 	}
 
 	// TODO: Create an arrayMean method which accepts an int array of values parameter.
-	// TODO: Create a JavaDoc comment for the arrayMean method.
+	
+	/**
+	 * Return the average of a given integer array 
+	 * 
+	 * @param values the integer array to take average of
+	 */
+	
+	public static double arrayMean(int[] values) {
+		double total = 0;
+		int length = values.length;
+		double avg = 0;
+		
+		for (int i = 0; i < values.length; i++) {
+			total += values[i];
+		}
+		avg = total/length;
+		return avg;
+	}
+	
+	// TODO: Create a JavaDoc comment for the arrayMean method. DONE
 
 	
 }
